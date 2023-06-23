@@ -7,10 +7,10 @@ import { useState } from "react";
 import WelcomeLogin from "./WelcomeLogin";
 import { WelcomeScreen } from "./WelcomeScreen";
 import { ContainerLogin } from "./ContainerLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
     const [clicked,setClicked]=useState(false);
-    
+    const navigate = useNavigate();
     const changeInputPassword = (e)=>{
         clicked?(  
                 <>
@@ -54,7 +54,7 @@ export default function Login() {
                             <i className={`${clicked?"pi pi-eye-slash":"pi pi-eye"}`}></i>
                         </span>
                     </div> 
-                    <Button className="mt-4 w-full" label="Ingresar"/>
+                    <Button className="mt-4 w-full" label="Ingresar" onClick={()=>navigate("/cursos")}/>
                     <div className="p-divider p-component p-divider-horizontal p-divider-solid p-divider-center my-6">
                        <div className="p-divider-content">
                             <span className="text-600 font-normal text-sm">O</span>

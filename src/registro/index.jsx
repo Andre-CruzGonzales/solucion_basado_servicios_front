@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Register } from './components/Register';
+import { Controller } from './controller/controller';
 
-function index() {
+function Index() {
+  const controller = Controller();
+  useEffect(() => {
+    
+  }, [])
+  
   return (
     <>
-        <Register/>
+        <Register 
+          formik={controller.formik} 
+          selectedRol={controller.selectedRol} 
+          setSelectedRol={controller.setSelectedRol} 
+          isFormFieldInvalid={controller.isFormFieldInvalid}
+        />
     </>
   )
 }
 
-export default index
+export default Index

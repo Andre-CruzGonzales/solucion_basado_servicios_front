@@ -11,7 +11,23 @@ function ManagerEntity() {
     
   return (
     <>
-        <ProfesorCurso visible={controller.visible} setVisible={controller.setVisible} data={controller.cursos} formik={controller.formik}/>
+        <ProfesorCurso 
+          visible={controller.visible} 
+          setVisible={controller.setVisible} 
+          visibleDelete={controller.visibleDelete} 
+          setVisibleDelete={controller.setVisibleDelete} 
+          data={controller.cursos} 
+          formik={controller.formik} 
+          onClickUpdate={controller.onClickUpdate}
+          onClickDelete={controller.onClickDelete}
+          visiblePublicar={controller.visiblePublicar}
+          setVisiblePublicar={controller.setVisiblePublicar}
+          onClickPublicar={controller.onClickPublicar}
+          onClickAddCurso={controller.onClickAddCurso}
+          onHide={controller.onHide}
+          isFormFieldInvalid={controller.isFormFieldInvalid}
+
+        />
     </>
   )
 }
