@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import logo from '../assets/logo-certus-blanco.png';
 import { InputText } from "primereact/inputtext";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ScrollPanel } from 'primereact/scrollpanel';
+import { Button } from 'primereact/button';
+import { Menu } from 'primereact/menu';
 export default function Container({children}) {
+    const menuLeft = useRef(null);
+    const navigate=useNavigate();
+    const itemsMenu = [
+        {
+            label: 'Options',
+            items: [
+                {
+                    label: 'Cerrar Sesión',
+                    icon: 'pi pi-refresh',
+                    command: () => {
+                        navigate("/",{replace:true});
+                        //navigate("/");
+                    }
+                }
+            ]
+        }
+    ]
     const items=[
         /*{
             icon:"pi pi-home",
@@ -64,6 +83,12 @@ export default function Container({children}) {
                           <i className='pi pi-ellipsis-v text-2xl'/> 
                           <span role="presentation" className='p-ink' style={{height:"0px",width:"0px"}}></span>
                         </div>
+                        <ul className='list-none p-0 m-0 hidden lg:flex lg:align-items-center select-none lg:flex-row surface-section border-1 lg:border-none surface-border right-0 top-100 z-1 shadow-2 lg:shadow-none absolute lg:static'>
+                            <li className=''>
+                                <Button icon="pi pi-user" rounded text severity="info" aria-label="User" size="small" onClick={(event) => menuLeft.current.toggle(event)}/>
+                                <Menu model={itemsMenu} ref={menuLeft} popup id="popup_menu_left" />
+                            </li>
+                        </ul>
                     </div>
                     
                     <div className='p-5 flex flex-column flex-auto'>

@@ -25,6 +25,8 @@ function ProfesorCurso({
         isFormFieldInvalid,
         updateCurso,
         onClickInscripcion,
+        deleteCurso,
+        loadData,
     }) {
     const [layout, setLayout] = useState('grid');
     
@@ -46,7 +48,8 @@ function ProfesorCurso({
                 </div>
             );
     };
-    
+    const paginatorLeft = <Button type="button" icon="pi pi-refresh" text onClick={loadData}/>;
+    const paginatorRight = <Button type="button" icon="pi pi-download" text />;
     return (
       <Container>
         <div className='flex justify-content-between py-3 ml-1'>
@@ -58,7 +61,7 @@ function ProfesorCurso({
             </span>
           
         </div>
-        <DataView value={data} itemTemplate={itemTemplate} layout={layout} paginator rows={6}/>
+        <DataView value={data} itemTemplate={itemTemplate} layout={layout} paginator rows={6} paginatorLeft={paginatorLeft} paginatorRight={paginatorRight}/>
           {<div className='grid'>
               {/*
                  data.map(item=>(
@@ -76,6 +79,8 @@ function ProfesorCurso({
             visibleDelete={visibleDelete} 
             setVisibleDelete={setVisibleDelete}
             nombreCurso={formik.values.nombre}
+            deleteCurso={deleteCurso}
+            formik={formik}
             
         />
         <ProfesorPublicarCurso

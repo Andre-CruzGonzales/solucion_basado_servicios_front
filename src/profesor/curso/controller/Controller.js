@@ -137,6 +137,7 @@ export const Controller = ()=>{
         onHide,
         isFormFieldInvalid,
         updateCurso,
+        deleteCurso,
         //curso,
 
     }

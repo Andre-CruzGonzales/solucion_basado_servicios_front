@@ -30,6 +30,8 @@ function ManagerEntity() {
           updateCurso={controller.updateCurso}
           inscripcion = {controllerAlumno.inscripcion}
           onClickInscripcion={controllerAlumno.onClickInscripcion}
+          deleteCurso={controller.deleteCurso}
+          loadData={controller.loadData}
 
         />
     </>
