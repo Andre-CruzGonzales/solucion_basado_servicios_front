@@ -18,12 +18,13 @@ export const Controller = ()=>{
             descripcion:'',
             estado:0,
             profesor:{
-                id:1,
+                id:JSON.parse(localStorage.getItem("user")).id,
             },
         },
         
         onSubmit: values =>{
             if(formik.values.id===null){
+                
                 createCurso(values);
             }else{
                 
@@ -44,6 +45,7 @@ export const Controller = ()=>{
 
     }
     const createCurso=async(data)=>{
+        formik.setValues("profesor.id",1)
         const resp= await fetch("http://localhost:8081/curso",{
             method: "POST",
             headers:{
@@ -107,12 +109,15 @@ export const Controller = ()=>{
         formik.setFieldValue('id',curso?.id);
         formik.setFieldValue('nombre',curso?.nombre);
         formik.setFieldValue('descripcion',curso?.descripcion);
+        formik.setFieldValue('estado',curso?.estado===0?1:0);
+        formik.setFieldValue('profesor',curso?.profesor);
         
     }
     const onHide=()=>{
         setVisible(false);
         formik.setValues(formik.initialValues);
     }
+    
     return{
         visible,
         setVisible,
@@ -131,6 +136,7 @@ export const Controller = ()=>{
         onClickAddCurso,
         onHide,
         isFormFieldInvalid,
+        updateCurso,
         //curso,
 
     }

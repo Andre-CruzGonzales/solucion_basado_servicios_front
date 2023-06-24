@@ -22,7 +22,9 @@ function ProfesorCurso({
         setVisiblePublicar,
         onClickAddCurso,
         onHide,
-        isFormFieldInvalid
+        isFormFieldInvalid,
+        updateCurso,
+        onClickInscripcion,
     }) {
     const [layout, setLayout] = useState('grid');
     
@@ -34,11 +36,12 @@ function ProfesorCurso({
             return (
                 <div key={course?.id} className='col-12 xl:col-6 p-1'>
                     <Curso 
-                        tipo={1} 
+                        tipo={JSON.parse(localStorage.getItem('user')).rol} 
                         curso={course}
                         onClickUpdate={onClickUpdate} 
                         onClickDelete={onClickDelete}
                         onClickPublicar={onClickPublicar}
+                        onClickInscripcion={onClickInscripcion}
                     />
                 </div>
             );
@@ -47,7 +50,8 @@ function ProfesorCurso({
     return (
       <Container>
         <div className='flex justify-content-between py-3 ml-1'>
-            <Button label="Agregar Curso" onClick={onClickAddCurso}/>
+            {JSON.parse(localStorage.getItem('user')).rol===1 && <Button label="Agregar Curso" onClick={onClickAddCurso}/>}
+            
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText placeholder="Buscar..." />
@@ -75,9 +79,11 @@ function ProfesorCurso({
             
         />
         <ProfesorPublicarCurso
+            updateCurso={updateCurso}
             visiblePublicar={visiblePublicar}
             setVisiblePublicar={setVisiblePublicar}
             nombreCurso={formik.values.nombre}
+            formik={formik}
         />
       </Container>
     )

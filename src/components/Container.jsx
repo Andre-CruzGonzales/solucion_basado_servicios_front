@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ScrollPanel } from 'primereact/scrollpanel';
 export default function Container({children}) {
     const items=[
-        {
+        /*{
             icon:"pi pi-home",
             label:"Dash",
             link:"/dashboard",
@@ -14,9 +14,9 @@ export default function Container({children}) {
             icon:"pi pi-home",
             label:"Cursos",
             link:"/cursos",
-        },
+        },*/
         {
-            icon:"pi pi-home",
+            icon:"pi pi-book",
             label:"Cursos",
             link:"/cursos",
         }
@@ -55,10 +55,10 @@ export default function Container({children}) {
                                 <i className='pi pi-bars text-4xl'/>
                                 <span role="presentation" className='p-ink' style={{height:"0px", width:"0px"}}></span>
                             </a>
-                            <span className="p-input-icon-left">
+                            {/*<span className="p-input-icon-left">
                                 <i className="pi pi-search" />
                                 <InputText placeholder="Search" />
-                             </span>
+                            </span>*/}
                         </div>
                         <div className='p-ripple cursor-pointer block lg:hidden text-700'>
                           <i className='pi pi-ellipsis-v text-2xl'/> 

@@ -1,10 +1,11 @@
 import React, { useRef } from 'react'
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
-export default function ProfesorPublicarCurso({visiblePublicar,setVisiblePublicar,nombreCurso=''}) {
+export default function ProfesorPublicarCurso({visiblePublicar,setVisiblePublicar,nombreCurso='',updateCurso,formik}) {
     const toast = useRef(null);
     const accept = () => {
         toast.current.show({ severity: 'success', summary: 'Confirmed', detail: 'Se Publico el curso correctamente', life: 3000 });
+        updateCurso(formik.values.id,formik.values);
     }
 
     const reject = () => {

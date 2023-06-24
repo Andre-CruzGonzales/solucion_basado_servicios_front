@@ -1,7 +1,7 @@
 import React from 'react'
 import { Rating } from 'primereact/rating';
 import { Button } from 'primereact/button';
-function Curso({tipo,curso,cantidadAlumnos=0,estado,costo=0,onClickDelete,onClickPublicar,onClickUpdate}) {
+function Curso({tipo,curso,cantidadAlumnos=0,estado,costo=0,onClickDelete,onClickPublicar,onClickUpdate,onClickInscripcion}) {
     
   return (
     <>
@@ -32,8 +32,8 @@ function Curso({tipo,curso,cantidadAlumnos=0,estado,costo=0,onClickDelete,onClic
                         </p>
                         
                         <p className='text-base flex align-items-center text-900 mt-0 mb-1'>
-                            <i className='pi pi-check-circle mr-2'/>
-                            <span className='font-medium'>{estado===1?'Publicado':'No Publicado'}</span>
+                            <i className={`pi pi-check-circle mr-2 ${curso?.estado===1?'text-green-500':''}`}/>
+                            <span className='font-medium'>{curso?.estado===1?'Publicado':'No Publicado'}</span>
                         </p>
                     </div>
                     <p className='font-semibold text-4xl text-900 mt-0 mb-2'>
@@ -51,7 +51,7 @@ function Curso({tipo,curso,cantidadAlumnos=0,estado,costo=0,onClickDelete,onClic
                 </div>
             ):(
                 <div className='mt-2'>
-                    <Button icon="pi pi-lock" label="Inscribirse" severity=""/>
+                    <Button icon="pi pi-lock" label="Inscribirse" severity="" onClick={()=>onClickInscripcion(curso)}/>
                     
                 </div>
             )

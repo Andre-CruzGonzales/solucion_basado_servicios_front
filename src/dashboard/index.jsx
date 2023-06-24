@@ -9,9 +9,7 @@ const index = () => {
   return (
     <Container>
     <div className='flex justify-content-between py-3 ml-1'>
-        <Button label="Agregar Curso"/>
         
-        <InputText label="Search"/>
     </div>
         <div className='grid'>
             {

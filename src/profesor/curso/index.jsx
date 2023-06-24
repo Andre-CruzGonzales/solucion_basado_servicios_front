@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import ProfesorCurso from './components/ProfesorCurso'
 import { Controller } from './controller/Controller'
+import { ControllerAlumno } from '../../Alumno/controller/Controller';
 
 function ManagerEntity() {
     const controller = Controller();
-    
+    const controllerAlumno = ControllerAlumno();
     useEffect(() => {
       controller.loadData();
     }, [])
@@ -26,6 +27,9 @@ function ManagerEntity() {
           onClickAddCurso={controller.onClickAddCurso}
           onHide={controller.onHide}
           isFormFieldInvalid={controller.isFormFieldInvalid}
+          updateCurso={controller.updateCurso}
+          inscripcion = {controllerAlumno.inscripcion}
+          onClickInscripcion={controllerAlumno.onClickInscripcion}
 
         />
     </>
