@@ -38,7 +38,7 @@ function ProfesorCurso({
             return (
                 <div key={course?.id} className='col-12 xl:col-6 p-1'>
                     <Curso 
-                        tipo={JSON.parse(localStorage.getItem('user')).rol} 
+                        tipo={JSON.parse(localStorage.getItem('user'))?.rol} 
                         curso={course}
                         onClickUpdate={onClickUpdate} 
                         onClickDelete={onClickDelete}
@@ -53,7 +53,7 @@ function ProfesorCurso({
     return (
       <Container>
         <div className='flex justify-content-between py-3 ml-1'>
-            {JSON.parse(localStorage.getItem('user')).rol===1 && <Button label="Agregar Curso" onClick={onClickAddCurso}/>}
+            {JSON.parse(localStorage.getItem('user'))?.rol===1 && <Button label="Agregar Curso" onClick={onClickAddCurso}/>}
             
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />

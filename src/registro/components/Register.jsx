@@ -35,6 +35,7 @@ export const Register = ({formik,selectedRol,setSelectedRol,isFormFieldInvalid})
                             Nombres y Apellidos
                         </label>
                         <InputText 
+                            keyfilter="alpha"
                             id='nombres_apellidos'
                             name='nombres_apellidos'
                             onChange={formik.handleChange}

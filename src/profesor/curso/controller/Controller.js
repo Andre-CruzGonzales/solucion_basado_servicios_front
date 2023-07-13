@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from "react-router-dom";
 export const Controller = ()=>{
+    
     const [visible,setVisible]=useState(false);
     const [visibleDelete,setVisibleDelete]=useState(false);
     const [visiblePublicar,setVisiblePublicar]=useState(false);
@@ -18,7 +20,7 @@ export const Controller = ()=>{
             descripcion:'',
             estado:0,
             profesor:{
-                id:JSON.parse(localStorage.getItem("user")).id,
+                id:JSON.parse(localStorage.getItem("user"))?.id,
             },
         },
         
@@ -38,6 +40,7 @@ export const Controller = ()=>{
     const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
     //fech
     const loadData=async ()=>{
+        
         const resp= await fetch("http://localhost:8081/curso");
         const data= await resp.json();
         setCursos(data);

@@ -10,7 +10,7 @@ export const ControllerAlumno = ()=>{
     const formik = useFormik({
         initialValues:{
            curso_id:null,
-           alumno_id:JSON.parse(localStorage.getItem('user')).id,
+           alumno_id:JSON.parse(localStorage.getItem('user'))?.id,
         },
         onSubmit: values =>{
             console.log(values);
