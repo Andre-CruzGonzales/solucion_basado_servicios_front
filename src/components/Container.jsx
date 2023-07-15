@@ -5,7 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ScrollPanel } from 'primereact/scrollpanel';
 import { Button } from 'primereact/button';
 import { Menu } from 'primereact/menu';
+import { OverlayPanel } from 'primereact/overlaypanel';
+import Cart from '../profesor/curso/components/Cart';
 export default function Container({children}) {
+    const op = useRef(null);
     const menuLeft = useRef(null);
     const navigate=useNavigate();
     const itemsMenu = [
@@ -51,6 +54,7 @@ export default function Container({children}) {
                         </div>
                         <div className='overflow-y-auto mt-3'>
                             <ul className='list-none p-3 m-0'>
+                                
                                 {
                                     items.map(item=>(
                                         <li key={item.icon}>
@@ -85,9 +89,14 @@ export default function Container({children}) {
                         </div>
                         <ul className='list-none p-0 m-0 hidden lg:flex lg:align-items-center select-none lg:flex-row surface-section border-1 lg:border-none surface-border right-0 top-100 z-1 shadow-2 lg:shadow-none absolute lg:static'>
                             <li className=''>
+                                <Button icon="pi pi-shopping-cart" rounded text severity="info" aria-label="User" size="small" onClick={(e) => op.current.toggle(e)}/>
                                 <Button icon="pi pi-user" rounded text severity="info" aria-label="User" size="small" onClick={(event) => menuLeft.current.toggle(event)}/>
                                 <Menu model={itemsMenu} ref={menuLeft} popup id="popup_menu_left" />
+                                
                             </li>
+                            <OverlayPanel ref={op}>
+                                <Cart />
+                            </OverlayPanel>
                         </ul>
                     </div>
                     

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export const ControllerAlumno = ()=>{
     const navigate = useNavigate();
-    
+    const [cart,setCart]=useState([]);
     
     const formik = useFormik({
         initialValues:{
@@ -37,6 +37,11 @@ export const ControllerAlumno = ()=>{
         console.log(formik.values);
         inscripcion({curso_id:curso?.id,alumno_id:JSON.parse(localStorage.getItem('user')).id});
         console.log(curso);
+        setCart([...cart])
+        
+        localStorage.setItem("cart",JSON.stringify(curso));
+        
+        
     }
     return{
         inscripcion,
